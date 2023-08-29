@@ -16,19 +16,21 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - env:
-        DYNAMICS_URL: ${{ inputs.dynamics-url }}
-        APPLICATION_ID: ${{ inputs.application-id }}
-        APPLICATION_SECRET: ${{ inputs.application-secret }}
-        TENANT_ID: ${{ inputs.tenant-id }}
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1'
+        php-version: '8.2'
 
     - name: Install Dependencies
-      run: composer install -d ci-scripts/
+      run: composer install -d src/ -o
+      shell: bash
 
     - name: Publish all changes
+      shell: bash
+      env:
+        DYNAMICS_URL: ${{ inputs.dynamics-url }}
+        APPLICATION_ID: ${{ inputs.application-id }}
+        APPLICATION_SECRET: ${{ inputs.application-secret }}
+        TENANT_ID: ${{ inputs.tenant-id }}
       run: src/index.php
