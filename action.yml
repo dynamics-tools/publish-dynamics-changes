@@ -1,0 +1,34 @@
+name: 'Publish changes to Microsoft Dynamics instance'
+description: 'Run this when you have made changes and want to publish them in your Microsoft Dynamics instance'
+inputs:
+    dynamics-url:
+        description: 'The URL of your Microsoft Dynamics instance'
+        required: true
+    application-id:
+        description: 'The Application ID of your Azure AD application connected to your Microsoft Dynamics instance app user'
+        required: true
+    application-secret:
+        description: 'The Application Secret of your Azure AD application connected to your Microsoft Dynamics instance app user'
+        required: true
+    tenant-id:
+        description: 'The Tenant ID of your Azure AD application connected to your Microsoft Dynamics instance app user'
+        required: true
+runs:
+  using: "composite"
+  steps:
+    - env:
+        DYNAMICS_URL: ${{ inputs.dynamics-url }}
+        APPLICATION_ID: ${{ inputs.application-id }}
+        APPLICATION_SECRET: ${{ inputs.application-secret }}
+        TENANT_ID: ${{ inputs.tenant-id }}
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+
+    - name: Install Dependencies
+      run: composer install -d ci-scripts/
+
+    - name: Publish all changes
+      run: src/index.php
