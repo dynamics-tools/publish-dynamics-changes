@@ -1,6 +1,7 @@
 name: 'Publish changes to Microsoft Dynamics instance'
 description: 'Run this when you have made changes and want to publish them in your Microsoft Dynamics instance'
-label: 'arrow-up-right'
+branding:
+  icon: 'arrow-up-right'
 inputs:
     dynamics-url:
         description: 'The URL of your Microsoft Dynamics instance'
