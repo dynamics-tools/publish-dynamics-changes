@@ -32,7 +32,7 @@ runs:
     - name: Publish all changes
       shell: bash
       env:
-        DYNAMICS_URL: ${{ inputs.dynamics-url }}
+        INSTANCE_URL: ${{ inputs.dynamics-url }}
         APPLICATION_ID: ${{ inputs.application-id }}
         APPLICATION_SECRET: ${{ inputs.application-secret }}
         TENANT_ID: ${{ inputs.tenant-id }}
