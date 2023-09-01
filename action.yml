@@ -26,7 +26,7 @@ runs:
         php-version: '8.2'
 
     - name: Install Dependencies
-      run: composer install -d src/ -o
+      run: composer install -d ${{ github.action_path }}/src/ -o
       shell: bash
 
     - name: Publish all changes
