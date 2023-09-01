@@ -33,4 +33,4 @@ runs:
         APPLICATION_ID: ${{ inputs.application-id }}
         APPLICATION_SECRET: ${{ inputs.application-secret }}
         TENANT_ID: ${{ inputs.tenant-id }}
-      run: src/index.php
+      run: ${{ github.action_path }}/src/index.php
