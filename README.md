@@ -7,8 +7,8 @@ This GitHub Action automates the process of publishing all unpublished changes t
 
 ## Inputs
 - `dynamics-url` - **Required**. The URL of your Dynamics instance. This is not the API URL, this is the URL you can find when you are using the application (ie -> yourorg.crm.dynamics.com not yourorg.api.crm.dynamics.com).
-- `client-id` - **Required**. The Client ID of the application created in Microsoft Azure that connects to the application user
-- `client-secret` - **Required**. The Client Secret of the application created in Microsoft Azure that connects to the application user
+- `application-id` - **Required**. The Client ID of the application created in Microsoft Azure that connects to the application user
+- `application-secret` - **Required**. The Client Secret of the application created in Microsoft Azure that connects to the application user
 - `tenant-id` - **Required**. The Tenant ID of the application created in Microsoft Azure that connects to the application user
 
 Best practice would be holding these values as repository secrets and then using them as secrets instead of plain values. Here is documentation about how to use secrets in GitHub Actions: https://docs.github.com/en/actions/security-guides/encrypted-secrets
