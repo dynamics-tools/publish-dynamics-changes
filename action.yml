@@ -26,7 +26,9 @@ runs:
         php-version: '8.2'
 
     - name: Install Dependencies
-      run: composer install -d ${{ github.action_path }}/src/ -o
+      env:
+        DIR_SEP: ${{ runner.os == 'Windows' && '\\' || '/' }}
+      run: composer install -d ${{ github.action_path }}${{ env.DIR_SEP }}src${{ env.DIR_SEP }} -o
       shell: bash
 
     - name: Publish all changes
@@ -35,5 +37,5 @@ runs:
         INSTANCE_URL: ${{ inputs.dynamics-url }}
         APPLICATION_ID: ${{ inputs.application-id }}
         APPLICATION_SECRET: ${{ inputs.application-secret }}
-        TENANT_ID: ${{ inputs.tenant-id }}
-      run: php ${{ github.action_path }}/src/index.php
+        DIR_SEP: ${{ runner.os == 'Windows' && '\\' || '/' }}
+      run: php ${{ github.action_path }}${{ env.DIR_SEP }}src${{ env.DIR_SEP }}index.php
