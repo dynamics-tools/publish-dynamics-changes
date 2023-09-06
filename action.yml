@@ -26,10 +26,8 @@ runs:
         php-version: '8.2'
 
     - name: Install Dependencies
-      env:
-        DIR_SEP: ${{ runner.os == 'Windows' && '\' || '/' }}
-      run: composer install -d ${{ github.action_path }}${{ env.DIR_SEP }}src${{ env.DIR_SEP }} -o
       shell: bash
+      run: composer install -d "$GITHUB_ACTION_PATH/src/" -o
 
     - name: Publish all changes
       shell: bash
@@ -37,5 +35,4 @@ runs:
         INSTANCE_URL: ${{ inputs.dynamics-url }}
         APPLICATION_ID: ${{ inputs.application-id }}
         APPLICATION_SECRET: ${{ inputs.application-secret }}
-        DIR_SEP: ${{ runner.os == 'Windows' && '\' || '/' }}
-      run: php ${{ github.action_path }}${{ env.DIR_SEP }}src${{ env.DIR_SEP }}index.php
+      run: php "$GITHUB_ACTION_PATH/src/index.php"
