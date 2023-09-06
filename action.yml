@@ -35,4 +35,5 @@ runs:
         INSTANCE_URL: ${{ inputs.dynamics-url }}
         APPLICATION_ID: ${{ inputs.application-id }}
         APPLICATION_SECRET: ${{ inputs.application-secret }}
+        TENANT_ID: ${{ inputs.tenant-id }}
       run: php "$GITHUB_ACTION_PATH/src/index.php"
